@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu, Dari Restu 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --pink: #ff6f9f;
+  --deep: #d83f78;
+  --cream: #fff8f6;
+  --text: #713e52;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: linear-gradient(
+    135deg, #fff0f5, #ffe0eb, #fff5ee, #fbe2f1
+  );
+  background-size: 300% 300%;
+  animation: gradient 12s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  padding: 25px 15px;
+}
+
+@keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+#hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -40px;
+  animation: floatUp linear forwards;
+  opacity: 0;
+}
+
+@keyframes floatUp {
+  10% { opacity: .8; }
+  100% {
+    transform: translateY(-115vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 490px;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background: rgba(255, 255, 255, .78);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,.95);
+  border-radius: 30px;
+  padding: 35px 27px;
+  text-align: center;
+  box-shadow: 0 20px 70px rgba(196, 83, 125, .16);
+  animation: appear .8s ease both;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(22px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.eyebrow {
+  display: inline-block;
+  border-radius: 30px;
+  background: #ffe6ef;
+  color: var(--deep);
+  padding: 8px 15px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.heart-icon {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 14px;
+  filter: drop-shadow(0 7px 12px #ffb4cd);
+  animation: heartbeat 1.7s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.13); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(29px, 7vw, 39px);
+  line-height: 1.25;
+  color: #b83e70;
+  margin-bottom: 17px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.message {
+  background: linear-gradient(135deg, #fff0f5, #fff9f6);
+  border: 1px solid #ffdfeb;
+  border-radius: 19px;
+  padding: 20px 17px;
+  margin: 23px 0;
+  text-align: left;
+}
+
+.message p + p {
+  margin-top: 12px;
+}
+
+.signature {
+  margin-top: 20px;
+  color: var(--deep);
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 23px;
+}
+
+button {
+  border: none;
+  border-radius: 50px;
+  padding: 15px 20px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+.btn-yes {
+  color: white;
+  background: linear-gradient(135deg, #ff8ab3, #e84c86);
+  box-shadow: 0 9px 22px rgba(232,76,134,.25);
+}
+
+.btn-no {
+  color: #bd6685;
+  background: white;
+  border: 1px solid #ffdae7;
+}
+
+.footer {
+  font-size: 11px;
+  color: #bd8499;
+  margin-top: 24px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#notification {
+  position: fixed;
+  z-index: 5;
+  left: 50%;
+  top: 22px;
+  transform: translate(-50%, -140%);
+  background: #fff;
+  padding: 17px 21px;
+  border-radius: 18px;
+  box-shadow: 0 10px 35px #c95b852b;
+  width: max-content;
+  max-width: calc(100% - 30px);
+  font-size: 13px;
+  text-align: center;
+  transition: transform .4s ease;
+}
+
+#notification.show {
+  transform: translate(-50%, 0);
+}
+
+.love-note {
+  font-size: 38px;
+  margin: 17px 0;
+}
+
+.thanks-text {
+  margin: 20px 0;
+}
+
+.small-note {
+  background: #fff0f5;
+  border-radius: 16px;
+  padding: 17px;
+  font-size: 13px;
+  line-height: 1.9;
+  margin-top: 20px;
+}
+
+@media (max-width: 380px) {
+  .card { padding: 28px 19px; }
+  h1 { font-size: 29px; }
+  .heart-icon { font-size: 55px; }
+}
+</style>
+</head>
+
+<body>
+<div id="hearts"></div>
+
+<div id="notification" role="status" aria-live="polite">
+  🥺 Restu sedih kalo ga dimaafin 💔
+</div>
+
+<main class="container">
+
+  <!-- HALAMAN PERMINTAAN MAAF -->
+  <section class="card" id="apology">
+    <span class="eyebrow">A LITTLE LETTER FOR YOU ♡</span>
+
+    <span class="heart-icon">💗</span>
+
+    <h1>Maafin Restu,<br>ya sayang?</h1>
+
+    <p>
+      Ada sesuatu yang ingin Restu Morales Cicurug sampein
+      dari hati yang paling dalam...
+    </p>
+
+    <div class="message">
+      <p>Hai, kamu Diaz Keyla Putri yang paling spesial buat Restu. 🧸💕</p>
+
+      <p>
+        Maaf Y selama ini ak nyebelin bgt ampe biki kamu 
+        bt, kesel, nangis, jujur aku gaada maksud buat kaya gitu
+        tapii yaaa aku tetep salah (walaupun ak masi jengkel sm si
+        take care itu)
+      </p>
+
+      <p>
+        aku juga ngerti kok kenapa kamu marah ampe gamau angkat
+        call aku, jujur aku juga kalo jadi kamu pasti bt abis sedih
+        tapi yaa tetep aku salah mungkin aku emang niat becanda tapii 
+        maaf kalo becanda aku kelewatan.
+      </p>
+
+      <p>
+        Jujur Aku juga pasti sebel banget sih kalo digituinn,
+        soo yaa intinyaa aku minta maaf y KEKEY CITETEP CANTIK
+      </p>
+
+      <p>
+        ORANG CITEREP CANTIK BAIK HATI PLISS MAAFIN GUE YHH
+      </p>
+    </div>
+
+    <p>
+      pilih pls (gamaksa)
+    </p>
+
+    <div class="buttons">
+      <button class="btn-yes" onclick="forgive()">
+        Aku Maafin, Restu ❤️
+      </button>
+
+      <button class="btn-no" onclick="notYet()">
+        Belum Bisa Maafin 
+      </button>
+    </div>
+
+    <div class="signature">With love, Restu ♡</div>
+
+    <div class="footer">
+      MADE WITH ALL MY HEART · 💌
+    </div>
+  </section>
+
+
+  <!-- HALAMAN TERIMA KASIH -->
+  <section class="card hidden" id="thankyou">
+    <span class="eyebrow">MY HEART IS SO HAPPY ♡</span>
+
+    <span class="heart-icon">🥹💖</span>
+
+    <h1>Makasih yaa,<br>sayangku!</h1>
+
+    <div class="love-note">🌷💗🧸</div>
+
+    <div class="message">
+      <p>Hehe, makasih banyak yaa udah maafin Restu. 🥹💕</p>
+
+      <p>
+        MAKASIH MAKASIH MAKASIHH PACARKUU YANG TERBAIK SEANTERO
+        JAGAT RAYA SEJUANDA SE CIAWI SE CITEREP SEINDONESIA RAYA
+      </p>
+
+      <p>
+        aku gajanji gabakal nyebelin lagi tapi insyaallah aku 
+        kurangin dikit demi kamu INTINYAAA AKO SAYANG KAMU Y
+      </p>
+
+      <p>
+        semoga setelah ini km ga sedih lg ya sayanKKKKKKK KU CINTA q 
+        Dunia Q Citerep 
+          </p>
+    </div>
+
+    <h2 style="font-family:'Playfair Display',serif;
+      color:#d83f78;font-size:24px;">
+      You mean so much to me 💗
+    </h2>
+
+    <div class="small-note">
+      LOVE U LOVE U.<br>
+      SAYANG BGT AMA KKEKEYYYY.<br><br>
+      <strong>Makasih udah ada di hidup Restu. 💐</strong>
+    </div>
+
+    <div class="signature">
+      Peluk hangat dari Restu 🤍
+    </div>
+
+  
+  </section>
+
+</main>
+
+<script>
+const notification = document.getElementById('notification');
+let notificationTimer;
+
+function notYet() {
+  notification.classList.add('show');
+
+  clearTimeout(notificationTimer);
+  notificationTimer = setTimeout(() => {
+    notification.classList.remove('show');
+  }, 3000);
+}
+
+function forgive() {
+  document.getElementById('apology').classList.add('hidden');
+  document.getElementById('thankyou').classList.remove('hidden');
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+  // Hati menjadi lebih ramai saat dimaafkan
+  for (let i = 0; i < 25; i++) {
+    setTimeout(createHeart, i * 100);
+  }
+}
+
+function createHeart() {
+  const heart = document.createElement('span');
+  heart.className = 'floating-heart';
+
+  const symbols = ['💗', '💕', '💖', '♡', '🌸', '✨', '💘'];
+  heart.textContent = symbols[
+    Math.floor(Math.random() * symbols.length)
+  ];
+
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (14 + Math.random() * 22) + 'px';
+
+  const duration = 5 + Math.random() * 6;
+  heart.style.animationDuration = duration + 's';
+
+  document.getElementById('hearts').appendChild(heart);
+
+  setTimeout(() => heart.remove(), duration * 1000);
+}
+
+// Hati beterbangan secara berkala
+setInterval(createHeart, 450);
+</script>
+
+</body>
+</html>
